@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hafiz Khateeb - Premium Portfolio</title>
+    <link rel="icon" type="image/png" href="4.jpeg" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Geist', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+
+      animation: {
+        breathe: 'breatheEffect 12s ease-in-out infinite',
+        'grid-fade': 'gridFadeLoop 8s ease-in-out infinite',
+        'khateeb-flow': 'moveGradientRight 5s linear infinite',
+      },
+
+      keyframes: {
+        breatheEffect: {
+          '0%, 100%': {
+            transform: 'translate(-50%, -20%) scale(1)',
+            opacity: '0.4',
+            filter: 'blur(100px)',
+          },
+          '50%': {
+            transform: 'translate(-45%, -15%) scale(1.1)',
+            opacity: '0.6',
+            filter: 'blur(130px)',
+          },
+        },
+
+        gridFadeLoop: {
+          '0%, 100%': { opacity: '0.08' },
+          '50%': { opacity: '0.2' },
+        },
+
+        moveGradientRight: {
+          '0%': { 'background-position': '0% 50%' },
+          '100%': { 'background-position': '-200% 50%' },
+        },
+      },
+    },
+  },
+}
+</script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Loveable&display=swap'); /* Note: Agar ye font custom file hai, toh @font-face use karein */
+
+.font-loveable {
+  font-family: 'Loveable', cursive;
+}
+  body {
+    background-color: #01080f;
+    overflow-x: hidden;
+  }
+
+  /* ================= BACKGROUND ================= */
+
+  .bg-ambient-layer {
+    background: radial-gradient(circle at 60% 40%, #55c1eb 20%, #01080f 70%),
+                linear-gradient(135deg, #042a31 0%, #01080f 100%);
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .bg-purple-hint {
+    background: radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 60%);
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+
+  /* ================= GRID ================= */
+
+  @keyframes gridPulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.6; }
+  }
+
+  .bg-grid-overlay {
+    background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+    /* default desktop */
+    background-size: 50px 50px;
+
+    animation: gridPulse 6s ease-in-out infinite;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* 📱 MOBILE OPTIMIZATION */
+  @media (max-width: 768px) {
+    .bg-grid-overlay {
+      background-size: 30px 30px;
+      opacity: 0.5;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bg-grid-overlay {
+      background-size: 22px 22px;
+      opacity: 0.35;
+    }
+  }
+
+  /* ================= TEXT GRADIENT ================= */
+
+  .gradient-flow-text {
+    background: linear-gradient(90deg, #22d3ee, #8b5cf6, #22d3ee);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes khateeb-flow {
+    to { background-position: 200% center; }
+  }
+
+  .animate-khateeb-flow {
+    animation: khateeb-flow 5s linear infinite;
+  }
+
+  /* ================= FLOATING CARDS ================= */
+
+  @keyframes floatingLeftCard {
+    0%, 100% { transform: translateY(0) rotate(-10deg) scale(1); }
+    50% { transform: translateY(-15px) rotate(-8deg) scale(1.02); }
+  }
+
+  @keyframes floatingRightCard {
+    0%, 100% { transform: translateY(0) rotate(8deg) scale(1); }
+    50% { transform: translateY(18px) rotate(10deg) scale(1.03); }
+  }
+
+  @keyframes floatingCenterCard {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.01); }
+  }
+
+  .animate-float-left {
+    animation: floatingLeftCard 6s ease-in-out infinite;
+  }
+
+  .animate-float-right {
+    animation: floatingRightCard 7s ease-in-out infinite;
+  }
+
+  .animate-float-center {
+    animation: floatingCenterCard 8s ease-in-out infinite;
+  }
+
+  /* 📱 MOBILE: reduce animation intensity */
+  @media (max-width: 768px) {
+    .animate-float-left,
+    .animate-float-right,
+    .animate-float-center {
+      animation-duration: 10s;
+      transform: none;
+    }
+  }
+ /* Animated Gradient for Heading */
+@keyframes move-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: move-gradient 4s linear infinite;
+}
+
+/* Card Interaction: Upward Flow + Bottom Light Glow */
+.card-hover-effect {
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid #1e293b;
+  background-color: #0a0a0a;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-12px); 
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.4);
+}
+ 
+</style>
+<body class="min-h-screen text-slate-100 antialiased overflow-x-hidden selection:bg-purple-500/30">
+
+  <!-- Background Layers -->
+  <div class="bg-ambient-layer"></div>
+  <div class="bg-purple-hint"></div>
+  <div class="bg-grid-overlay"></div>
+
+  <div class="relative z-10">
+    <header class="fixed inset-x-0 top-0 z-50 bg-white/5 backdrop-blur-xl border border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <div class="flex items-center gap-3">
+
+      <!-- Gradient Border -->
+      <div class="p-[2px] rounded-2xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600">
+        <img
+          src="4.jpeg"
+          alt="Hafiz Khateeb"
+          class="w-14 h-12 rounded-xl object-cover bg-white"
+        >
+      </div>
+
+      <span class="font-semibold tracking-wide text-lg text-white">
+        Hafiz Khateeb
+      </span>
+
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <a href="#home" class="relative py-1 text-white group transition-colors">Home
+        <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="#about" class="relative py-1 group transition-colors hover:text-white">About
+        <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="#skills" class="relative py-1 group transition-colors hover:text-white">Skills
+        <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="#projects" class="relative py-1 group transition-colors hover:text-white">Projects
+        <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="#contact" class="relative py-1 group transition-colors hover:text-white">Contact
+        <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    </nav>
+
+    <!-- Right Side -->
+    <div class="flex items-center gap-3">
+
+      <!-- Hire Button -->
+      <a href="#contact"
+         class="px-5 py-2 rounded-full text-xs font-semibold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.2)] hover:opacity-95 transition-all">
+        Hire Me
+      </a>
+
+      <!-- Mobile Button -->
+      <button id="menuBtn" class="md:hidden text-white text-3xl">
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu"
+       class="hidden md:hidden px-6 pb-4 pt-2 bg-black/40 backdrop-blur-md">
+<html class="scroll-smooth">
+
+<nav class="flex items-center gap-8">
+    
+    <a href="#home"
+       class="text-slate-300 hover:text-cyan-400 transition">
+       Home
+    </a>
+
+    <a href="#about"
+       class="text-slate-300 hover:text-cyan-400 transition">
+       About
+    </a>
+
+    <a href="#services"
+       class="text-slate-300 hover:text-cyan-400 transition">
+       Services
+    </a>
+
+    <a href="#contact"
+       class="text-slate-300 hover:text-cyan-400 transition">
+       Contact
+    </a>
+
+</nav>
+  </div>
+</header>
+
+
+    <section id="home" class="relative pt-36 pb-28 md:pt-44 md:pb-40 w-full overflow-hidden">
+  <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-12 px-6">
+    
+    <div class="order-2 lg:order-1 flex flex-col items-start space-y-6">
+      
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#031c2b]/60 text-xs text-slate-300 border border-cyan-500/10 font-sans">
+        <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Gujranwala, Pakistan
+      </div>
+
+      <h1 class="text-7xl md:text-[7.5rem] font-semibold tracking-tight leading-[0.85] text-white">
+        Hafiz <br />
+        <span class="gradient-flow-text animate-khateeb-flow">Khateeb</span>
+      </h1>
+
+      <div class="flex items-center gap-2 font-mono text-lg md:text-xl text-slate-300 min-h-[32px] pt-4">
+        <span class="text-cyan-400 font-bold">&gt;_ ~$</span>
+        <span id="typewriter-target" class="text-slate-100 tracking-wide font-bold"></span>
+        <span class="w-[2.5px] h-5 bg-cyan-400 animate-pulse"></span>
+      </div>
+
+      <p class="text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
+        "From neural networks to network security — building what's next."
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <a href="#contact" class="group px-6 py-3 rounded-full text-sm font-semibold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white flex items-center gap-2 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-[0_0_35px_rgba(99,102,241,0.6)] hover:-translate-y-1">
+          Get In Touch
+          <span class="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+        </a>
+        <div class="rounded-full p-[1.5px] bg-transparent hover:bg-gradient-to-r hover:from-cyan-400 hover:via-blue-500 hover:to-purple-500 transition-all duration-300">
+          <button class="w-full px-6 py-3 rounded-full text-sm font-semibold bg-[#06131d]/70 backdrop-blur-xl text-slate-200 transition-all duration-300 hover:scale-105 hover:bg-[#081926]/80 hover:shadow-[0_0_18px_rgba(34,211,238,0.35),0_0_35px_rgba(168,85,247,0.25)]">
+            Download CV
+          </button>
+        </div>
+      </div>
+
+      <div class="max-w-xl pt-6">
+        <div class="flex gap-4">
+          <div class="group relative w-32 h-24 p-3 rounded-lg border border-white/10 bg-transparent transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+            <h2 class="text-3xl font-bold text-cyan-400">10+</h2>
+            <p class="text-slate-400 text-[9px] mt-0.5 uppercase tracking-wider">CORE SKILL</p>
+            <div class="absolute -bottom-1 left-2 right-2 h-0.5 bg-cyan-400 opacity-0 group-hover:opacity-100 blur-[2px] transition-opacity duration-300"></div>
+          </div>
+          <div class="group relative w-32 h-24 p-3 rounded-lg border border-white/10 bg-transparent transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+            <h2 class="text-3xl font-bold text-cyan-400">50+</h2>
+            <p class="text-slate-400 text-[9px] mt-0.5 uppercase tracking-wider">SELECTED PROJECTS</p>
+            <div class="absolute -bottom-1 left-2 right-2 h-0.5 bg-cyan-400 opacity-0 group-hover:opacity-100 blur-[2px] transition-opacity duration-300"></div>
+          </div>
+          <div class="group relative w-32 h-24 p-3 rounded-lg border border-white/10 bg-transparent transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+            <h2 class="text-3xl font-bold text-cyan-400">24/7</h2>
+            <p class="text-slate-400 text-[9px] mt-0.5 uppercase tracking-wider">UPTIME MINDSET</p>
+            <div class="absolute -bottom-1 left-2 right-2 h-0.5 bg-cyan-400 opacity-0 group-hover:opacity-100 blur-[2px] transition-opacity duration-300"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-1 flex justify-center lg:order-2">
+      <div class="relative w-[16rem] h-[24rem] sm:w-[22rem] sm:h-[34rem] lg:h-[38rem] lg:w-[24rem] flex items-center justify-center">
+        <div class="absolute left-[-20%] sm:left-[-28%] lg:left-[-30%] top-[5%] sm:top-[-2%] z-10 h-[14rem] w-[10rem] sm:h-[18rem] sm:w-[14rem] lg:h-[20rem] lg:w-[18rem] animate-float-left shadow-[0_25px_60px_rgba(0,0,0,0.85)] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/10">
+          <img src="5.jpeg" class="w-full h-full object-cover" />
+        </div>
+        <div class="absolute right-[-18%] sm:right-[-25%] lg:right-[-22%] bottom-[2%] sm:bottom-[-6%] z-10 h-[14rem] w-[10rem] sm:h-[22rem] sm:w-[14rem] lg:h-[26rem] lg:w-[18rem] animate-float-right shadow-[0_25px_60px_rgba(0,0,0,0.85)] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/10">
+          <img src="6.jpeg" class="w-full h-full object-cover" />
+        </div>
+        <div class="relative z-20 h-[18rem] w-[12rem] sm:h-[28rem] sm:w-[18rem] lg:h-[32rem] lg:w-[22rem] bg-[#020b14]/90 rounded-[1.8rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.25),_0_30px_80px_rgba(0,0,0,0.95)] border border-cyan-500/30 flex flex-col justify-between animate-float-center">
+          <div class="absolute top-6 right-4 sm:top-10 sm:right-5 px-2 sm:px-3.5 py-1 rounded-full bg-slate-950/90 text-[9px] sm:text-[11px] uppercase font-mono tracking-widest text-slate-100 flex items-center gap-2 z-30 border border-white/10">
+            <span class="w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></span> secure
+          </div>
+          <div id="image-slider-container" class="absolute inset-0 w-full h-full bg-slate-950 z-0 overflow-hidden">
+            <div class="slide absolute inset-0 w-full h-full opacity-100 scale-100 transition-all duration-1000 ease-in-out"><img src="1.jpeg" class="w-full h-full object-cover" /></div>
+            <div class="slide absolute inset-0 w-full h-full opacity-0 scale-105 transition-all duration-1000 ease-in-out"><img src="2.jpeg" class="w-full h-full object-cover" /></div>
+            <div class="slide absolute inset-0 w-full h-full opacity-0 scale-105 transition-all duration-1000 ease-in-out"><img src="3.jpeg" class="w-full h-full object-cover" /></div>
+            <div class="slide absolute inset-0 w-full h-full opacity-0 scale-105 transition-all duration-1000 ease-in-out"><img src="4.jpeg" class="w-full h-full object-cover" /></div>
+          </div>
+          <span class="absolute bottom-3 left-3 sm:bottom-4 sm:left-5 font-mono text-[9px] sm:text-[11px] bg-[#020b14]/95 text-[#2dd4bf] px-2 sm:px-3.5 py-1 rounded-full tracking-wider z-30 border border-cyan-500/20 shadow-[0_4px_12px_rgba(0,0,0,0.5)] flex items-center gap-1.5">
+            <span class="text-cyan-400 font-bold">$</span> status: online
+          </span>
+          <div id="dots-wrapper" class="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 z-30 bg-slate-950/40 px-2 sm:px-3 py-1 rounded-full backdrop-blur-sm border border-white/5">
+            <div class="dot w-3 sm:w-4 h-1.5 rounded-full bg-cyan-400"></div>
+            <div class="dot w-1.5 h-1.5 rounded-full bg-white/30"></div>
+            <div class="dot w-1.5 h-1.5 rounded-full bg-white/30"></div>
+            <div class="dot w-1.5 h-1.5 rounded-full bg-white/30"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-[#0b0e14] py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    
+   <div class="flex flex-col items-center mb-16 text-center">
+      <!-- About Button (Screenshot 2026-06-23 192834.png style) -->
+      <section id="about">
+        <div class="inline-flex border border-cyan-500/50 rounded-full px-8 py-2 mb-6 bg-[#0a0a0a]">
+        <span class="text-cyan-400 font-mono text-sm tracking-[0.2em] uppercase">/-- ABOUT --\</span>
+      </div>
+      <!-- Heading -->
+      <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter animate-gradient">
+        WHO I AM
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <div class="lg:col-span-2 border border-slate-800 rounded-2xl p-8 bg-[#0a0a0a] card-hover-effect">
+        <div class="text-slate-300 leading-relaxed text-lg space-y-6">
+          <p>
+            I'm an <span class="animate-gradient font-bold">AI Developer</span>, <span class="animate-gradient font-bold">Cybersecurity</span> specialist, and Server Architect who designs, builds, and manages complete digital infrastructure end-to-end. I'm the architect behind <span class="animate-gradient font-bold">ApnaSchool Edu</span> — Pakistan's emerging School Management System — having led its idea, design, and full‑scale infrastructure from the ground up. From building autonomous AI agents and LLM integrations to hardening Linux servers, configuring Nginx, and orchestrating Docker workloads on Oracle Cloud and Hostinger — I bring a hands‑on, security‑first mindset to every layer of the stack.
+          </p>
+          <p>
+            I run <span class="animate-gradient font-bold">Skill Orbit Solution</span>, a full-service digital agency. I specialize in zero-cost infrastructure strategy — leveraging platforms like <span class="animate-gradient font-bold">Oracle Cloud's Free Tier</span>to help clients cut hosting costs to virtually nothing, without compromising on performance or security. I've collaborated with international clients as well as established local brands, consistently delivering systems that are secure, scalable, and built to last.
+          </p>
+          <p>
+            If you're looking for someone who doesn't just write code but architects, secures, and owns the entire system — let's build something exceptional together.
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="card-hover-effect rounded-xl p-6">
+          <p class="text-slate-500 text-xs uppercase tracking-widest mb-1">Focus</p>
+          <p class="text-white font-medium">AI · Security · Servers</p>
+        </div>
+        
+        <div class="card-hover-effect rounded-xl p-6">
+          <p class="text-slate-500 text-xs uppercase tracking-widest mb-1">Stack</p>
+          <p class="text-white font-medium">Python · Docker · Nginx</p>
+        </div>
+        
+        <div class="card-hover-effect rounded-xl p-6">
+          <p class="text-slate-500 text-xs uppercase tracking-widest mb-1">Status</p>
+          <p class="text-white font-medium">Available for work</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="skills" class="bg-[#0b0e14] py-20 px-6">
+  <div class="max-w-8xl mx-auto">
+    
+    <!-- Heading Section (Original style, unchanged) -->
+    <div class="flex flex-col items-center mb-16 text-center">
+      <div class="inline-flex border border-cyan-500/50 rounded-full px-8 py-2 mb-6 bg-[#0a0a0a]">
+        <span class="text-cyan-400 font-mono text-sm tracking-[0.2em] uppercase">/-- EXPERTISEN--\</span>
+      </div>
+      <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter animate-gradient">
+          CORE SKILLS
+      </h3>
+<p class="mt-6  text-gray-400 text-xl">Three disciplines I live in every day.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      
+  <div class="relative bg-[#11141d] rounded-3xl p-10 border border-[#1b1f2b] group hover:border-[#00d4ff] hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-[#00d4ff] rounded-full blur-[50px] opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+
+    <div class="relative z-10">
+      <div class="inline-flex items-center justify-center size-16 bg-gradient-to-br from-[#11D4F5] via-[#29C3F6] to-[#A78BFA] rounded-2xl text-white mb-8 relative">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-[#11D4F5] via-[#29C3F6] to-[#A78BFA] rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition duration-300"></div>
+
+    <span class="relative">
+        <img src="brain.png" alt="brain" class="w-8 h-8">
+    </span>
+
+</div>
+      <h4 class="text-3xl font-bold mb-5">AI Development</h4>
+      <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+        Custom AI agents, LLM integrations, RAG pipelines, and intelligent automation systems built to ship.
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm text-gray-500 font-mono">
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">LLMs</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Agents</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Python</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">RAG</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative bg-[#11141d] rounded-3xl p-10 border border-[#1b1f2b] group hover:border-[#00d4ff] hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-[#00d4ff] rounded-full blur-[50px] opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+
+    <div class="relative z-10">
+     <div class="inline-flex items-center justify-center size-16 bg-gradient-to-br from-[#11D4F5] via-[#29C3F6] to-[#A78BFA] rounded-2xl text-white mb-8 relative">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-[#11D4F5] via-[#29C3F6] to-[#A78BFA] rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition duration-300"></div>
+<span class="relative">
+  <img src="verified.png" alt="verified" class="w-8 h-8">
+</span>  
+      </div>
+      <h4 class="text-3xl font-bold mb-5">Cybersecurity</h4>
+      <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+        Network security, server hardening, SSL/TLS, threat modeling, and proactive vulnerability management.
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm text-gray-500 font-mono">
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Hardening</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">SSL</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Pentesting</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Monitoring</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative bg-[#11141d] rounded-3xl p-10 border border-[#1b1f2b] group hover:border-[#00d4ff] hover:-translate-y-2 transition-all duration-300 overflow-hidden">
+    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-3/4 h-20 bg-[#00d4ff] rounded-full blur-[50px] opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+
+    <div class="relative z-10">
+    <div class="inline-flex items-center justify-center size-16 bg-gradient-to-br from-[#11D4F5] via-[#29C3F6] to-[#A78BFA] rounded-2xl text-white mb-8 relative">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-[#11D4F5] via-[#29C3F6] to-[#A78BFA] rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition duration-300"></div>
+<span class="relative">
+  <img src="server.png" alt="server" class="w-8 h-8">
+</span>  
+      </div>
+      <h4 class="text-3xl font-bold mb-5">Server Architecture</h4>
+      <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+        Oracle Cloud, Nginx, Docker, CI/CD pipelines, and resilient infrastructure that scales.
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm text-gray-500 font-mono">
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Oracle Cloud</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Nginx</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">Docker</span>
+        <span class="bg-[#191d29] px-4 py-1.5 rounded-full border border-[#2a2f3f]">CI/CD</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+<!-- Skills Section -->
+<section class="w-full bg-[#0d1117] py-12 md:py-16">
+
+  <!-- Divider -->
+  <div class="w-full flex items-center justify-center gap-3 md:gap-4 px-4 mb-8 md:mb-10">
+    <div class="flex-1 h-px bg-[#1e3a4a]"></div>
+
+    <span class="text-white text-[10px] sm:text-xs md:text-sm lg:text-base tracking-[0.15em] uppercase whitespace-nowrap">
+      + Also Skilled In
+    </span>
+
+    <div class="flex-1 h-px bg-[#1e3a4a]"></div>
+  </div>
+
+  <!-- Grid -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-5">
+
+      <!-- Card 1 -->
+      <div class="group relative flex flex-col sm:flex-row items-center justify-center gap-3 p-5 min-h-[100px] md:min-h-[85px] border border-[#1a3040] bg-[#0d1117] text-[#e0f4f8] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0055ff33] via-[#0077ff22] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400 relative z-10 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="12" cy="12" r="3"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+
+        <span class="relative z-10 font-medium text-center text-sm md:text-base">
+          UI/UX Design
+        </span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group relative flex flex-col sm:flex-row items-center justify-center gap-3 p-5 min-h-[100px] md:min-h-[85px] border border-[#1a3040] bg-[#0d1117] text-[#e0f4f8] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0055ff33] via-[#0077ff22] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400 relative z-10 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395"/>
+        </svg>
+
+        <span class="relative z-10 font-medium text-center text-sm md:text-base">
+          Graphic Designing
+        </span>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group relative flex flex-col sm:flex-row items-center justify-center gap-3 p-5 min-h-[100px] md:min-h-[85px] border border-[#1a3040] bg-[#0d1117] text-[#e0f4f8] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0055ff33] via-[#0077ff22] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400 relative z-10 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5 20.47 5.78a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72"/>
+        </svg>
+
+        <span class="relative z-10 font-medium text-center text-sm md:text-base">
+          Video Editing
+        </span>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group relative flex flex-col sm:flex-row items-center justify-center gap-3 p-5 min-h-[100px] md:min-h-[85px] border border-[#1a3040] bg-[#0d1117] text-[#e0f4f8] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0055ff33] via-[#0077ff22] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400 relative z-10 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728"/>
+        </svg>
+
+        <span class="relative z-10 font-medium text-center text-sm md:text-base">
+          Social Media Marketing
+        </span>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group relative flex flex-col sm:flex-row items-center justify-center gap-3 p-5 min-h-[100px] md:min-h-[85px] border border-[#1a3040] bg-[#0d1117] text-[#e0f4f8] rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0055ff33] via-[#0077ff22] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-400 relative z-10 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25"/>
+        </svg>
+
+        <span class="relative z-10 font-medium text-center text-sm md:text-base">
+          Web Development
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section id="projects" class="bg-[#0b0e14] py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+    
+    <!-- Heading Section (Original style, unchanged) -->
+    <div class="flex flex-col items-center mb-16 text-center">
+      <div class="inline-flex border border-cyan-500/50 rounded-full px-8 py-2 mb-6 bg-[#0a0a0a]">
+        <span class="text-cyan-400 font-mono text-sm tracking-[0.2em] uppercase">/-- EXPERTISEN--\</span>
+      </div>
+      <h3 class="text-3xl md:text-6xl font-black uppercase tracking-tighter animate-gradient">
+          SELECTED PROJECTS
+      </h3>
+<p class="mt-6  text-gray-400 text-xl">A snapshot of recent work — more shipping soon.
+
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+      <div class="group relative overflow-hidden rounded-[30px] border border-cyan-700/50 bg-[#070d1b] transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400">
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-cyan-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div class="relative h-[220px] bg-gradient-to-br from-cyan-600 to-cyan-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.3) 1px, transparent 1px); background-size:50px 50px;"></div>
+          <div class="absolute bottom-6 left-6 font-mono text-white/70 text-sm">~/projects/AI-agent-development</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-white text-2xl font-bold mb-4">AI Agent Development</h3>
+          <p class="text-slate-400 mb-6">Autonomous LLM-powered agents that handle research, automation, and workflow orchestration.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Python</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">OpenAI</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">LangChain</span>
+    </div>
+         <a href="#"
+   class="hidden group-hover:inline-flex items-center gap-2 text-cyan-400 font-medium">
+    View Case Study →</a>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-[30px] border border-cyan-700/50 bg-[#070d1b] transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400">
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div class="relative h-[220px] bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.3) 1px, transparent 1px); background-size:50px 50px;"></div>
+          <div class="absolute bottom-6 left-6 font-mono text-white/70 text-sm">~/projects/Server-security-architecture</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-white text-2xl font-bold mb-4">Server Security Architecture</h3>
+          <p class="text-slate-400 mb-6">Hardened multi-tenant servers with WAF, fail2ban, SSL automation, and intrusion monitoring.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Nginx</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">SSL</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">fail2ban</span>
+    </div>
+        <a href="#"
+   class="hidden group-hover:inline-flex items-center gap-2 text-cyan-400 font-medium">
+    View Case Study →</a>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-[30px] border border-cyan-700/50 bg-[#070d1b] transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400">
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-violet-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div class="relative h-[220px] bg-gradient-to-br from-violet-600 via-indigo-500 to-cyan-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.3) 1px, transparent 1px); background-size:50px 50px;"></div>
+          <div class="absolute bottom-6 left-6 font-mono text-white/70 text-sm">~/projects/cloud-infrastructure-setup</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-white text-2xl font-bold mb-4">Cloud Infrastructure Setup</h3>
+          <p class="text-slate-400 mb-6">Production-grade Oracle Cloud deployments with Docker orchestration and CI/CD pipelines.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Oracle Cloud</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Docker</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">CI/CD</span>
+    </div>
+<a href="#"
+   class="hidden group-hover:inline-flex items-center gap-2 text-cyan-400 font-medium">
+    View Case Study →</a>        
+  </div>
+      </div>
+
+       <div class="group relative overflow-hidden rounded-[30px] border border-cyan-700/50 bg-[#070d1b] transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400">
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-violet-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div class="relative h-[220px] bg-gradient-to-br from-violet-600 via-indigo-500 to-cyan-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.3) 1px, transparent 1px); background-size:50px 50px;"></div>
+          <div class="absolute bottom-6 left-6 font-mono text-white/70 text-sm">~/projects/threat-detection-dashboard</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-white text-2xl font-bold mb-4">Threat Detection Dashboard</h3>
+          <p class="text-slate-400 mb-6">Real-time log aggregation and anomaly detection for server fleets.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Logs</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Monitoring</span>
+    </div>
+          
+         <a href="#"
+   class="hidden group-hover:inline-flex items-center gap-2 text-cyan-400 font-medium">
+    View Case Study →
+</a>
+        </div>
+      </div>
+
+      <div class="group relative overflow-hidden rounded-[30px] border border-cyan-700/50 bg-[#070d1b] transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400">
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-cyan-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div class="relative h-[220px] bg-gradient-to-br from-cyan-600 to-cyan-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.3) 1px, transparent 1px); background-size:50px 50px;"></div>
+          <div class="absolute bottom-6 left-6 font-mono text-white/70 text-sm">~/projects/LLM-RAG-Knowledge-Base</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-white text-2xl font-bold mb-4">LLM RAG Knowledge Base</h3>
+          <p class="text-slate-400 mb-6">Custom retrieval-augmented chatbots trained on private documentation.</p>
+           <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">RAG</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Vector DB</span>
+    </div>
+<a href="#"
+   class="hidden group-hover:inline-flex items-center gap-2 text-cyan-400 font-medium">
+    View Case Study →
+</a>        </div>
+      </div>
+
+       <div class="group relative overflow-hidden rounded-[30px] border border-cyan-700/50 bg-[#070d1b] transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400">
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-blue-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div class="relative h-[220px] bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 overflow-hidden">
+          <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.3) 1px, transparent 1px); background-size:50px 50px;"></div>
+          <div class="absolute bottom-6 left-6 font-mono text-white/70 text-sm">~/projects/Brand-&-ui-system</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-white text-2xl font-bold mb-4">Brand Identity</h3>
+          <p class="text-slate-400 mb-6">End-to-end visual identity, UI design, and motion for digital products.</p>
+           <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Design</span>
+      <span class="px-3 py-1 text-[10px] uppercase tracking-wider font-bold text-gray-400 border border-gray-300 rounded-full bg-cyan-950/20">Motion</span>
+    </div>
+<a href="#"
+   class="hidden group-hover:inline-flex items-center gap-2 text-cyan-400 font-medium">
+    View Case Study →
+</a>        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</section>
+<section class="bg-[#0b0e14] py-20 px-6">
+  <div class="max-w-9xl mx-auto">
+
+    <!-- Heading -->
+    <div class="flex flex-col items-center mb-16 text-center">
+      <div class="inline-flex border border-cyan-500/50 rounded-full px-8 py-2 mb-6 bg-[#0a0a0a]">
+        <span class="text-cyan-400 font-mono text-sm tracking-[0.2em] uppercase">
+          /-- JOURNEY --\
+        </span>
+      </div>
+
+      <h3 class="text-3xl md:text-6xl font-black uppercase tracking-tighter animate-gradient">
+        THE PATH SO FAR
+      </h3>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 py-20">
+
+      <!-- Timeline Line -->
+      <div class="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[2px]">
+        <div class="h-full w-full bg-gradient-to-b from-transparent via-cyan-400 to-transparent shadow-[0_0_20px_#22d3ee]"></div>
+      </div>
+
+      <!-- ITEM 1 -->
+      <div class="grid grid-cols-2 gap-8 items-center relative mb-10">
+
+        <div class="text-right pr-8">
+          <span class="block text-cyan-400 text-lg font-semibold mb-1 tracking-wider">2026</span>
+          <h2 class="text-xl font-semibold text-white">
+            SaaS Product Leadership & AI Integration
+          </h2>
+        </div>
+
+        <div class="absolute left-1/2 top-2 -translate-x-1/2 z-20">
+          <div class="relative flex items-center justify-center">
+            <span class="absolute w-8 h-8 rounded-full bg-cyan-400/30 blur-md"></span>
+            <span class="relative w-4 h-4 rounded-full bg-gradient-to-br from-cyan-200 via-cyan-400 to-cyan-600 border border-cyan-100 shadow-[0_0_20px_#22d3ee]"></span>
+          </div>
+        </div>
+
+        <div class="pl-2 pr-32">
+          <div class="rounded-2xl border border-cyan-400/15 bg-[#08111f]/60 backdrop-blur-xl p-6">
+            <p class="text-gray-400 leading-7">
+              Leading product strategy and development for SaaS platforms exploring AI-powered business software.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="grid grid-cols-2 gap-8 items-center relative mb-10">
+
+        <div class="text-right pr-8">
+          <span class="block text-cyan-400 text-lg font-semibold mb-1 tracking-wider">2025</span>
+          <h2 class="text-xl font-semibold text-white">
+            AI Development & Server Architecture
+          </h2>
+        </div>
+
+        <div class="absolute left-1/2 top-2 -translate-x-1/2 z-20">
+          <div class="relative flex items-center justify-center">
+            <span class="absolute w-8 h-8 rounded-full bg-cyan-400/30 blur-md"></span>
+            <span class="relative w-4 h-4 rounded-full bg-gradient-to-br from-cyan-200 via-cyan-400 to-cyan-600 border border-cyan-100 shadow-[0_0_20px_#22d3ee]"></span>
+          </div>
+        </div>
+
+        <div class="pl-2 pr-32">
+          <div class="rounded-2xl border border-cyan-400/15 bg-[#08111f]/60 backdrop-blur-xl p-6">
+            <p class="text-gray-400 leading-7">
+              Took full ownership of production infrastructure deploying AI agents and scalable server environments.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="grid grid-cols-2 gap-8 items-center relative mb-10">
+
+        <div class="text-right pr-8">
+          <span class="block text-cyan-400 text-lg font-semibold mb-1 tracking-wider">2024</span>
+          <h2 class="text-xl font-semibold text-white">
+            Cybersecurity & Network Security
+          </h2>
+        </div>
+
+        <div class="absolute left-1/2 top-2 -translate-x-1/2 z-20">
+          <div class="relative flex items-center justify-center">
+            <span class="absolute w-8 h-8 rounded-full bg-cyan-400/30 blur-md"></span>
+            <span class="relative w-4 h-4 rounded-full bg-gradient-to-br from-cyan-200 via-cyan-400 to-cyan-600 border border-cyan-100 shadow-[0_0_20px_#22d3ee]"></span>
+          </div>
+        </div>
+
+        <div class="pl-2 pr-32">
+          <div class="rounded-2xl border border-cyan-400/15 bg-[#08111f]/60 backdrop-blur-xl p-6">
+            <p class="text-gray-400 leading-7">
+              Deepening expertise in network security, server hardening, infrastructure protection and threat modeling.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="grid grid-cols-2 gap-8 items-center relative">
+
+        <div class="text-right pr-8">
+          <span class="block text-cyan-400 text-lg font-semibold mb-1 tracking-wider">2023</span>
+          <h2 class="text-xl font-semibold text-white">
+            Graphic Designing & Web Foundations
+          </h2>
+        </div>
+
+        <div class="absolute left-1/2 top-2 -translate-x-1/2 z-20">
+          <div class="relative flex items-center justify-center">
+            <span class="absolute w-8 h-8 rounded-full bg-cyan-400/30 blur-md"></span>
+            <span class="relative w-4 h-4 rounded-full bg-gradient-to-br from-cyan-200 via-cyan-400 to-cyan-600 border border-cyan-100 shadow-[0_0_20px_#22d3ee]"></span>
+          </div>
+        </div>
+
+        <div class="pl-2 pr-32">
+          <div class="rounded-2xl border border-cyan-400/15 bg-[#08111f]/60 backdrop-blur-xl p-6">
+            <p class="text-gray-400 leading-7">
+              Built strong fundamentals across web development, UI/UX, branding and digital media.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" class="bg-[#0b0e14] py-20 px-6">  <div class="max-w-8xl mx-auto">
+    
+    <!-- Heading Section (Original style, unchanged) -->
+    <div class="flex flex-col items-center mb-16 text-center">
+      <div class="inline-flex border border-cyan-500/50 rounded-full px-8 py-2 mb-6 bg-[#0a0a0a]">
+        <span class="text-cyan-400 font-mono text-sm tracking-[0.2em] uppercase">/-- CONTACT\n--\</span>
+      </div>
+      <h3 class="text-6xl md:text-6xl font-black uppercase tracking-tighter animate-gradient">
+LET'S BUILD <br>  SOMETHING TOGETHER 
+      </h3>
+<p class="mt-6  text-gray-400 text-xl">Have a project in mind? Drop a message — I usually reply within a <br> day.
+ </p>
+    </div>
+    <div class="bg-[#020817] py-16 px-4 md:px-6">
+
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+
+    <!-- LEFT SIDE -->
+    <div class="space-y-4">
+
+      <!-- CARD -->
+      <div class="group relative overflow-hidden rounded-2xl border border-[#1a3350] bg-[#07111f] p-4 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400">
+
+        <div class="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-cyan-400 blur-sm transition-all duration-500 group-hover:w-full"></div>
+
+        <div class="absolute -bottom-8 left-1/2 h-12 w-40 -translate-x-1/2 bg-cyan-400/30 blur-3xl opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
+
+        <div class="relative z-10 flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 via-sky-400 to-purple-400">
+
+    <img
+        src="mail.png"
+        alt="Email"
+        class="w-6 h-6 object-contain">
+
+</div>
+          <div>
+            <p class="text-[11px] uppercase tracking-[3px] text-gray-500">Email</p>
+            <h3 class="text-lg font-semibold text-white">hafizkhateeeb@gmail</h3>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="group relative overflow-hidden rounded-2xl border border-[#1a3350] bg-[#07111f] p-4 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400">
+
+        <div class="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-cyan-400 blur-sm transition-all duration-500 group-hover:w-full"></div>
+
+        <div class="absolute -bottom-8 left-1/2 h-12 w-40 -translate-x-1/2 bg-cyan-400/30 blur-3xl opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
+
+        <div class="relative z-10 flex items-center gap-4">
+
+         <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 via-sky-400 to-purple-400">
+
+    <img
+        src="phone-call.png"
+        alt="Email"
+        class="w-6 h-6 object-contain">
+
+</div>
+          <div>
+            <p class="text-[11px] uppercase tracking-[3px] text-gray-500">Phone</p>
+            <h3 class="text-lg font-semibold text-white">+92-339-6066102</h3>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="group relative overflow-hidden rounded-2xl border border-[#1a3350] bg-[#07111f] p-4 transition-all duration-500 hover:-translate-y-2 hover:border-cyan-400">
+
+        <div class="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-cyan-400 blur-sm transition-all duration-500 group-hover:w-full"></div>
+
+        <div class="absolute -bottom-8 left-1/2 h-12 w-40 -translate-x-1/2 bg-cyan-400/30 blur-3xl opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
+
+        <div class="relative z-10 flex items-center gap-4">
+
+         <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 via-sky-400 to-purple-400">
+
+    <img
+        src="location.png"
+        alt="Email"
+        class="w-6 h-6 object-contain">
+
+</div>
+
+          <div>
+            <p class="text-[11px] uppercase tracking-[3px] text-gray-500">Location</p>
+            <h3 class="text-lg font-semibold text-white">Shahenabad, Gujranwala, Pakistan</h3>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SOCIAL -->
+      <div class="flex gap-3 pt-2">
+
+       <a href="https://www.linkedin.com" target="_blank"
+   class="group relative flex h-12 w-12 items-center justify-center rounded-xl
+          border border-[#1a3350] bg-[#07111f] text-gray-400
+          transition-all duration-300 ease-in-out
+          hover:-translate-y-2 hover:border-cyan-400
+          hover:shadow-[0_10px_30px_rgba(34,211,238,0.25)]">
+
+  <span class="absolute inset-0 rounded-xl opacity-0 blur-xl
+               bg-cyan-400/40 transition-all duration-300
+               group-hover:opacity-100"></span>
+
+  <img src="linkedin.png" class="relative w-6 h-6 object-contain group-hover:scale-110">
+</a>
+        <a href="https://www.facebook.com" target="_blank"
+   class="group relative flex h-12 w-12 items-center justify-center rounded-xl
+          border border-[#1a3350] bg-[#07111f] text-gray-400
+          transition-all duration-300 ease-in-out
+          hover:-translate-y-2 hover:border-cyan-400
+          hover:shadow-[0_10px_30px_rgba(34,211,238,0.25)]">
+
+  <span class="absolute inset-0 rounded-xl opacity-0 blur-xl
+               bg-cyan-400/40 transition-all duration-300
+               group-hover:opacity-100"></span>
+
+  <img src="facebook.png"
+       class="relative w-6 h-6 object-contain transition-all duration-300
+              group-hover:scale-110">
+
+</a>
+
+       <a href="https://www.instagram.com" target="_blank"
+   class="group relative flex h-12 w-12 items-center justify-center rounded-xl
+          border border-[#1a3350] bg-[#07111f] text-gray-400
+          transition-all duration-300 ease-in-out
+          hover:-translate-y-2 hover:border-cyan-400
+          hover:shadow-[0_10px_30px_rgba(34,211,238,0.25)]">
+
+  <span class="absolute inset-0 rounded-xl opacity-0 blur-xl
+               bg-cyan-400/40 transition-all duration-300
+               group-hover:opacity-100"></span>
+
+  <img src="instagram.png" class="relative w-6 h-6 object-contain group-hover:scale-110">
+</a>
+        <a href="https://github.com" target="_blank"
+   class="group relative flex h-12 w-12 items-center justify-center rounded-xl
+          border border-[#1a3350] bg-[#07111f] text-gray-400
+          transition-all duration-300 ease-in-out
+          hover:-translate-y-2 hover:border-cyan-400
+          hover:shadow-[0_10px_30px_rgba(34,211,238,0.25)]">
+
+  <span class="absolute inset-0 rounded-xl opacity-0 blur-xl
+               bg-cyan-400/40 transition-all duration-300
+               group-hover:opacity-100"></span>
+
+  <img src="github.png" class="relative w-6 h-6 object-contain group-hover:scale-110">
+</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="group relative overflow-hidden rounded-3xl border border-[#1a3350] bg-[#07111f] p-6 transition-all duration-500 hover:border-cyan-400 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]">
+
+      <div class="absolute inset-0 rounded-3xl border border-cyan-400/40 opacity-0 transition-all duration-500 group-hover:opacity-100"></div>
+
+      <div class="relative z-10">
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="h-12 w-full rounded-xl border border-[#1a3350] bg-[#020817] px-4 text-white outline-none focus:border-cyan-400">
+
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="h-12 w-full rounded-xl border border-[#1a3350] bg-[#020817] px-4 text-white outline-none focus:border-cyan-400">
+
+        </div>
+
+        <textarea
+          rows="6"
+          placeholder="Tell me about your project..."
+          class="w-full rounded-xl border border-[#1a3350] bg-[#020817] p-4 text-white outline-none resize-none focus:border-cyan-400"></textarea>
+
+        <a href="https://wa.me/923001234567?text=Hello%20Sir%2C%20I%20want%20to%20send%20a%20message"
+   target="_blank"
+   class="mt-5 flex h-12 w-full items-center justify-center rounded-xl
+          bg-gradient-to-r from-cyan-400 via-sky-400 to-purple-400
+          text-base font-semibold text-black transition-all duration-300
+          hover:scale-[1.02]">
+  Send Message →
+</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<footer class="bg-[#020B1A] border-t border-cyan-500/10 py-3">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center text-black text-sm font-bold">
+                    HK
+                </div>
+
+                <h2 class="text-white text-xl font-semibold">
+                    Hafiz Khateeb
+                </h2>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-gray-400 text-sm text-center">
+                © 2026 Hafiz Khateeb. All rights reserved.
+            </p>
+
+            <!-- Social Icons -->
+            <div class="flex items-center gap-3">
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com"
+                    target="_blank"
+                    class="group w-10 h-10 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:-translate-y-1 transition-all duration-300">
+                    <i class="fab fa-linkedin-in text-sm"></i>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://facebook.com"
+                    target="_blank"
+                    class="group w-10 h-10 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:-translate-y-1 transition-all duration-300">
+                    <i class="fab fa-facebook-f text-sm"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com"
+                    target="_blank"
+                    class="group w-10 h-10 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:-translate-y-1 transition-all duration-300">
+                    <i class="fab fa-instagram text-sm"></i>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com"
+                    target="_blank"
+                    class="group w-10 h-10 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:-translate-y-1 transition-all duration-300">
+                    <i class="fab fa-github text-sm"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ================= TYPEWRITER ================= */
+  const typewriterPhrases = ["Cybersecurity Expert", "Server Architect", "AI Engineer"];
+  let phraseIdx = 0, characterIdx = 0, deletingActive = false;
+
+  const targetElement = document.getElementById("typewriter-target");
+
+  function runTypewriter() {
+    if (!targetElement) return;
+
+    const activePhrase = typewriterPhrases[phraseIdx];
+
+    characterIdx += deletingActive ? -1 : 1;
+    targetElement.textContent = activePhrase.substring(0, characterIdx);
+
+    let timeout = deletingActive ? 40 : 110;
+
+    if (!deletingActive && characterIdx === activePhrase.length) {
+      timeout = 2000;
+      deletingActive = true;
+    } 
+    else if (deletingActive && characterIdx === 0) {
+      deletingActive = false;
+      phraseIdx = (phraseIdx + 1) % typewriterPhrases.length;
+      timeout = 400;
+    }
+
+    setTimeout(runTypewriter, timeout);
+  }
+
+  runTypewriter();
+
+
+  /* ================= SLIDER ================= */
+  const slides = document.querySelectorAll("#image-slider-container .slide");
+  const dots = document.querySelectorAll("#dots-wrapper .dot");
+
+  let activeSlideIdx = 0;
+
+  function processSliderTransition() {
+    if (!slides.length || !dots.length) return;
+
+    // hide current
+    slides[activeSlideIdx].classList.replace('opacity-100', 'opacity-0');
+    slides[activeSlideIdx].classList.replace('scale-100', 'scale-105');
+
+    dots[activeSlideIdx].classList.remove('w-4', 'bg-cyan-400');
+    dots[activeSlideIdx].classList.add('w-1.5', 'bg-white/30');
+
+    // next index
+    activeSlideIdx = (activeSlideIdx + 1) % slides.length;
+
+    // show next
+    slides[activeSlideIdx].classList.replace('opacity-0', 'opacity-100');
+    slides[activeSlideIdx].classList.replace('scale-105', 'scale-100');
+
+    dots[activeSlideIdx].classList.remove('w-1.5', 'bg-white/30');
+    dots[activeSlideIdx].classList.add('w-4', 'bg-cyan-400');
+  }
+
+  setInterval(processSliderTransition, 3500);
+
+
+  /* ================= MOBILE MENU SAFE ================= */
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+});
+</script>
+</body>
+</html>
