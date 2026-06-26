@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-
+   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
 tailwind.config = {
@@ -394,7 +394,7 @@ tailwind.config = {
     </div>
   </div>
 </section>
-<section class="bg-[#0b0e14] py-20 px-6">
+<section class="bg-[#0b0e14] py-20 px-6"   data-aos="fade"   >
   <div class="max-w-4xl mx-auto">
     
    <div class="flex flex-col items-center mb-16 text-center">
@@ -445,7 +445,7 @@ tailwind.config = {
     </div>
   </div>
 </section>
-<section id="skills" class="bg-[#0b0e14] py-20 px-6">
+<section id="skills" class="bg-[#0b0e14] py-20 px-6" data-aos="fade" >
   <div class="max-w-8xl mx-auto">
     
     <!-- Heading Section (Original style, unchanged) -->
@@ -539,7 +539,7 @@ tailwind.config = {
 </div>
 </section>
 <!-- Skills Section -->
-<section class="w-full bg-[#0d1117] py-12 md:py-16">
+<section class="w-full bg-[#0d1117] py-12 md:py-16"   data-aos="fade" >
 
   <!-- Divider -->
   <div class="w-full flex items-center justify-center gap-3 md:gap-4 px-4 mb-8 md:mb-10">
@@ -633,7 +633,7 @@ tailwind.config = {
   </div>
 
 </section>
-<section id="projects" class="bg-[#0b0e14] py-20 px-6">
+<section id="projects" class="bg-[#0b0e14] py-20 px-6"  data-aos="fade">
     <div class="max-w-7xl mx-auto">
     
     <!-- Heading Section (Original style, unchanged) -->
@@ -774,7 +774,7 @@ tailwind.config = {
 </section>
 
 </section>
-<section class="bg-[#0b0e14] py-20 px-6">
+<section class="bg-[#0b0e14] py-20 px-6"   data-aos="fade">
   <div class="max-w-9xl mx-auto">
 <section class="bg-[#0b0e14] py-16 md:py-20 px-4">
   <div class="max-w-7xl mx-auto">
@@ -912,7 +912,8 @@ tailwind.config = {
     </div>
   </div>
 </section>
-<section id="contact" class="bg-[#0b0e14] py-20 px-6">  <div class="max-w-8xl mx-auto">
+<section id="contact" class="bg-[#0b0e14] py-20 px-6"   data-aos="fade">  
+  <div class="max-w-8xl mx-auto">
     
     <!-- Heading Section (Original style, unchanged) -->
     <div class="flex flex-col items-center mb-16 text-center">
@@ -1250,6 +1251,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+});
+</script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 1000,      // Animation speed
+  easing: "ease-out",
+  once: true,          // Sirf ek baar chale
+  offset: 120          // Section thoda pehle animate ho
 });
 </script>
 </body>
