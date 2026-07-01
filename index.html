@@ -291,11 +291,11 @@
     50%{ transform:translateY(-3.5cqw); }
   }
   @keyframes cycle{
-    0%{ opacity:0; }
-    4%{ opacity:1; }
-    24%{ opacity:1; }
-    30%{ opacity:0; }
-    100%{ opacity:0; }
+    0%{ opacity:0; transform:scale(1) translate(0,0); }
+    4%{ opacity:1; transform:scale(1) translate(0,0); }
+    24%{ opacity:1; transform:scale(1.12) translate(-2%,2%); }
+    30%{ opacity:0; transform:scale(1.14) translate(-2.5%,2.5%); }
+    100%{ opacity:0; transform:scale(1) translate(0,0); }
   }
   </style>
 </head>
@@ -394,32 +394,34 @@
 
        <div class="w-[min(90vw,900px)] [container-type:inline-size] animate-[floatUpDown_4.5s_ease-in-out_infinite]">
 
+  <div class="w-[100vw] [container-type:inline-size] animate-[floatUpDown_4.5s_ease-in-out_infinite]">
+
   <div class="relative w-full [aspect-ratio:1600/900]">
 
     <img
       class="base absolute inset-0 w-full h-full object-contain pointer-events-none"
-      src="hand_transparent.png"
+      src="robotic.png"
       alt="">
 
-    <div class="absolute left-[49.25%] top-[35.7%] w-[19cqw] h-[19cqw] -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden bg-[#04101f]">
+    <div class="absolute left-[49.25%] top-[35.7%] w-[22cqw] h-[22cqw] -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden bg-[#04101f]">
 
       <img
-        src="https://picsum.photos/seed/hud1/400"
+        src="1.jpeg"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:0s]"
         alt="">
 
       <img
-        src="https://picsum.photos/seed/hud2/400"
+        src="2.jpeg"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:3s]"
         alt="">
 
       <img
-        src="https://picsum.photos/seed/hud3/400"
+        src="3.jpeg"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:6s]"
         alt="">
 
       <img
-        src="https://picsum.photos/seed/hud4/400"
+        src="4.jpeg"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:9s]"
         alt="">
 
