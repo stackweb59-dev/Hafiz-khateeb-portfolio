@@ -442,32 +442,28 @@ transform:translateY(-28px);
 /* ==========================
    PORTAL IMAGE ANIMATION
 ========================== */
+.portal{
+    position:absolute;
+    inset:18%;
+    border-radius:50%;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
 .portal img{
-    transform:scale(1.08);
-    transition:
-        opacity 1s ease,
-        transform 4s linear;
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition:opacity 1s ease;
 }
 
 .portal img.active{
     opacity:1;
-    transform:scale(1);
 }
-
-.portal::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-    background:
-    radial-gradient(circle,
-    transparent 55%,
-    rgba(56,189,248,.08) 70%,
-    rgba(56,189,248,.18) 100%);
-    pointer-events:none;
-}
-
   .circuit{ position:absolute; inset:0; pointer-events:none; }
 
   /* ---------- hand (real cut-out image) ---------- */
