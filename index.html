@@ -286,17 +286,7 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15), 0 0 14px rgba(34,211,238,0.45);
     }
     .glass-scroll::-webkit-scrollbar-corner { background: transparent; }
-    @keyframes floatUpDown{
-    0%,100%{ transform:translateY(0px); }
-    50%{ transform:translateY(-3.5cqw); }
-  }
-  @keyframes cycle{
-    0%{ opacity:0; }
-    4%{ opacity:1; }
-    24%{ opacity:1; }
-    30%{ opacity:0; }
-    100%{ opacity:0; }
-  }
+  
   @keyframes spin{ from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
   .spin{ animation: spin 6s linear infinite; transform-origin:240px 240px; }
   .spin-rev{ animation: spin 26s linear infinite reverse; transform-origin:240px 240px; }
@@ -307,14 +297,36 @@
   }
   .pulse-dot{ animation: pulseDot 2.2s ease-in-out infinite; }
 
-  @keyframes badgePulse{
-    0%,100%{ box-shadow: 0 0 0px rgba(56,189,248,0.0); }
-    50%{ box-shadow: 0 0 18px rgba(56,189,248,0.35); }
+  /* gentle up-down float for the hand */
+  @keyframes handFloat{
+    0%,100%{ transform: translateY(0px); }
+    50%{ transform: translateY(-16px); }
   }
-  .status-badge{ animation: badgePulse 2.6s ease-in-out infinite; }
+  .hand-float{ animation: handFloat 4.2s ease-in-out infinite; }
+
+  /* gentle up-down float for the circle (slightly different timing so it feels natural) */
+  @keyframes circleFloat{
+    0%,100%{ transform: translate(-50%, 0px); }
+    50%{ transform: translate(-50%, -14px); }
+  }
+  .circle-float{ animation: circleFloat 4.2s ease-in-out infinite; }
+
+  /* 4 photos cycling inside the circle, one at a time */
+  @keyframes photoFade{
+    0%   { opacity: 0; }
+    2%   { opacity: 1; }
+    21%  { opacity: 1; }
+    25%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  .photo-1{ animation: photoFade 12s infinite; animation-delay: 0s; }
+  .photo-2{ animation: photoFade 12s infinite; animation-delay: 3s; }
+  .photo-3{ animation: photoFade 12s infinite; animation-delay: 6s; }
+  .photo-4{ animation: photoFade 12s infinite; animation-delay: 9s; }
 
   @media (prefers-reduced-motion: reduce){
-    .spin,.spin-rev,.pulse-dot,.status-badge{ animation:none !important; }
+    .spin,.spin-rev,.pulse-dot,.hand-float,.circle-float,
+    .photo-1,.photo-2,.photo-3,.photo-4{ animation:none !important; }
   }
   </style>
 </head>
@@ -413,22 +425,20 @@
 
           <!-- Center AI Hologram -->
 <div class="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-   <!-- RIGHT: your robotic hand image + big holographic circle overlay -->
-    <div class="relative order-1 md:order-2 flex items-center justify-center h-[520px] md:h-[600px]">
 
-      <!-- status badge, top-right, like reference -->
-      <div class="status-badge absolute top-4 right-0 md:right-6 bg-slate-900/80 border border-sky-400/30 text-sky-300 font-mono text-sm px-4 py-2 rounded-lg z-30">
-        $ status: online
-      </div>
+    <!-- RIGHT: your robotic hand image + big holographic circle overlay -->
+    <div class="relative order-1 md:order-2 flex items-center justify-center h-[520px] md:h-[600px] md:-mr-10 lg:-mr-20">
 
       <!-- ================= YOUR ROBOTIC HAND IMAGE ================= -->
-      <!-- Replace src below with your own robotic hand image -->
-      <img src="REPLACE_WITH_YOUR_HAND_IMAGE.png"
+      <!-- Replace src below with your own robotic hand image.
+           It's pinned bottom-0 right-0 so it sits directly under the circle
+           and its right edge touches the end of this section. -->
+      <img src="robot.png"
            alt="Robotic hand"
-           class="absolute bottom-0 right-0 w-[95%] md:w-[90%] object-contain z-10 pointer-events-none select-none"/>
+           class="hand-float absolute bottom-0 right-0 w-full object-contain object-right-bottom z-10 pointer-events-none select-none"/>
 
       <!-- ================= HOLOGRAPHIC CIRCLE (bigger) ================= -->
-      <div class="absolute top-2 md:top-6 left-1/2 -translate-x-1/2 z-20 w-[340px] h-[340px] md:w-[420px] md:h-[420px]">
+      <div class="circle-float absolute top-2 md:top-6 left-1/2 z-20 w-[340px] h-[340px] md:w-[420px] md:h-[420px]">
         <svg viewBox="0 0 480 480" class="w-full h-full">
           <defs>
             <radialGradient id="glow" cx="50%" cy="50%" r="50%">
@@ -538,10 +548,16 @@
           <circle class="pulse-dot" cx="480" cy="270" r="4" fill="#f472b6" style="animation-delay:1s"/>
           <circle class="pulse-dot" cx="460" cy="355" r="4" fill="#f472b6" style="animation-delay:1.5s"/>
 
-          <!-- center photo (swap this image for your own) -->
+          <!-- center: 4 photos, cycling one at a time (replace all 4 hrefs with your own images) -->
           <g clip-path="url(#photoClip)">
-            <image href="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces"
+            <image class="photo-1" href="1.jpeg"
                    x="120" y="120" width="240" height="240" preserveAspectRatio="xMidYMid slice"/>
+            <image class="photo-2" href="2.jpeg"
+                   x="120" y="120" width="240" height="240" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+            <image class="photo-3" href="3.jpeg"
+                   x="120" y="120" width="240" height="240" preserveAspectRatio="xMidYMid slice" opacity="0"/>
+            <image class="photo-4" href="4.jpeg"
+                   x="120" y="120" width="240" height="240" preserveAspectRatio="xMidYMid slice" opacity="0"/>
           </g>
           <circle cx="240" cy="240" r="120" fill="none" stroke="#0c4a6e" stroke-width="3"/>
           <circle cx="240" cy="240" r="120" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.6"/>
