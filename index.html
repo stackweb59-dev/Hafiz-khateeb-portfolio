@@ -291,11 +291,11 @@
     50%{ transform:translateY(-3.5cqw); }
   }
   @keyframes cycle{
-    0%{ opacity:0; transform:scale(1) translate(0,0); }
-    4%{ opacity:1; transform:scale(1) translate(0,0); }
-    24%{ opacity:1; transform:scale(1.12) translate(-2%,2%); }
-    30%{ opacity:0; transform:scale(1.14) translate(-2.5%,2.5%); }
-    100%{ opacity:0; transform:scale(1) translate(0,0); }
+    0%{ opacity:0; }
+    4%{ opacity:1; }
+    24%{ opacity:1; }
+    30%{ opacity:0; }
+    100%{ opacity:0; }
   }
   </style>
 </head>
@@ -398,28 +398,28 @@
 
     <img
       class="base absolute inset-0 w-full h-full object-contain pointer-events-none"
-      src="robotic.png"
+      src="hand_transparent.png"
       alt="">
 
     <div class="absolute left-[49.25%] top-[35.7%] w-[19cqw] h-[19cqw] -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden bg-[#04101f]">
 
       <img
-        src="1.jpeg"
+        src="https://picsum.photos/seed/hud1/400"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:0s]"
         alt="">
 
       <img
-        src="2.jpeg"
+        src="https://picsum.photos/seed/hud2/400"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:3s]"
         alt="">
 
       <img
-        src="3.jpeg"
+        src="https://picsum.photos/seed/hud3/400"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:6s]"
         alt="">
 
       <img
-        src="4.jpeg"
+        src="https://picsum.photos/seed/hud4/400"
         class="absolute inset-0 w-full h-full object-cover opacity-0 animate-[cycle_12s_infinite] [animation-delay:9s]"
         alt="">
 
