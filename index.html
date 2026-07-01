@@ -429,14 +429,9 @@
     <!-- RIGHT: your robotic hand image + big holographic circle overlay -->
     <div class="relative order-1 md:order-2 flex items-center justify-center h-[520px] md:h-[600px] md:-mr-10 lg:-mr-20">
 
-      <!-- ================= YOUR ROBOTIC HAND IMAGE ================= -->
-      <!-- Replace src below with your own robotic hand image.
-           It's pinned bottom-0 right-0 so it sits directly under the circle
-           and its right edge touches the end of this section. -->
-      <img src="Robotic hand.png"
-           alt="Robotic hand"
-           class="hand-float absolute bottom-0 right-0 w-full object-contain object-right-bottom z-10 pointer-events-none select-none"/>
-
+      <img src="robotic-hand.png"
+     alt="Robotic hand"
+     class="hand-float absolute bottom-0 right-0 w-full object-contain object-right-bottom z-10 pointer-events-none select-none">
       <!-- ================= HOLOGRAPHIC CIRCLE (bigger) ================= -->
       <div class="circle-float absolute top-2 md:top-6 left-1/2 z-20 w-[340px] h-[340px] md:w-[420px] md:h-[420px]">
         <svg viewBox="0 0 480 480" class="w-full h-full">
@@ -568,12 +563,12 @@
 
   </div>
 <!-- Secure -->
-<div class="absolute -top-4 -left-4 ...">
+<div class="absolute -top-4 -right-4 ...">
   <span style="color:var(--violet)">●</span> secure
 </div>
 
 <!-- Online -->
-<div class="absolute top-10 -left-4 ..."
+<div class="absolute top-10 -right-4 ..."
      style="color:var(--cyan)">
   $ status: online
 </div>
