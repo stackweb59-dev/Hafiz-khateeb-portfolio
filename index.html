@@ -433,7 +433,7 @@
       <!-- Replace src below with your own robotic hand image.
            It's pinned bottom-0 right-0 so it sits directly under the circle
            and its right edge touches the end of this section. -->
-      <img src="robot.png"
+      <img src="Robotic hand.png"
            alt="Robotic hand"
            class="hand-float absolute bottom-0 right-0 w-full object-contain object-right-bottom z-10 pointer-events-none select-none"/>
 
@@ -567,14 +567,16 @@
     </div>
 
   </div>
+<!-- Secure -->
+<div class="absolute -top-4 -left-4 ...">
+  <span style="color:var(--violet)">●</span> secure
+</div>
 
-
-            <!-- Badges outside overflow-hidden so they can stick out -->
-            <div class="absolute -bottom-4 -left-4 z-40 rounded-xl border border-border bg-card/90 px-3 py-2 font-mono text-xs backdrop-blur shadow-glow" style="color:var(--cyan)">$ status: online</div>
-            <div class="absolute -right-4 -top-4 z-40 rounded-xl border border-border bg-card/90 px-3 py-2 font-mono text-xs text-foreground backdrop-blur shadow-glow">
-              <span style="color:var(--violet)">●</span> secure
-            </div>
-          </div>
+<!-- Online -->
+<div class="absolute top-10 -left-4 ..."
+     style="color:var(--cyan)">
+  $ status: online
+</div>
         </div>
       </div>
     </div>
