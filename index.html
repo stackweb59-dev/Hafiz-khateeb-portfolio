@@ -934,16 +934,17 @@
               <!-- Center AI Hologram -->
               <div
                 class="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
-              >
-                <!-- RIGHT: your robotic hand image + big holographic circle overlay -->
-                <div
-                  class="relative order-1 md:order-2 flex items-center justify-center h-[520px] md:h-[600px] md:-mr-10 lg:-mr-20"
-                >
-                  <img
-                    src="Robotic hand.png"
-                    alt="Robotic hand"
-                    class="hand-float absolute bottom-0 right-0 w-full object-contain object-right-bottom z-10 pointer-events-none select-none"
-                  />
+             <!-- RIGHT: your robotic hand image + big holographic circle overlay -->
+<div
+  class="relative order-1 md:order-2 flex items-center justify-center h-[520px] md:h-[600px] md:-mr-10 lg:-mr-20"
+>
+  <img
+    src="Robotic%20hand.png?v=1"
+    alt="Robotic hand"
+    class="hand-float absolute bottom-0 right-0 w-full object-contain object-right-bottom z-10 pointer-events-none select-none"
+    onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='Robotic hand.png?v='+Date.now();} else {console.error('Robotic hand.png still not loading — rename the file to remove the space, e.g. robotic-hand.png, and update src to match exactly.');}"
+  />
+</div>
                   <!-- ================= HOLOGRAPHIC CIRCLE (bigger) ================= -->
                   <div
                     class="circle-float absolute top-2 md:top-6 left-1/2 z-20 w-[340px] h-[340px] md:w-[420px] md:h-[420px]"
