@@ -429,10 +429,10 @@
     <!-- RIGHT: your robotic hand image + big holographic circle overlay -->
     <div class="relative order-1 md:order-2 flex items-center justify-center h-[520px] md:h-[600px] md:-mr-10 lg:-mr-20">
 
-<!-- ================= HOLOGRAPHIC CIRCLE (bigger) ================= -->
-<div class="circle-float absolute top-2 md:top-6 left-1/2 z-20 w-[500px] h-[500px] md:w-[640px] md:h-[640px]">
+      <!-- ================= HOLOGRAPHIC CIRCLE (bigger) ================= -->
+     <!-- ================= HOLOGRAPHIC CIRCLE (bigger) ================= -->
+<div class="circle-float absolute top-2 md:top-6 left-1/2 z-20 w-[420px] h-[420px] md:w-[520px] md:h-[520px]">
   <svg viewBox="0 0 480 480" class="w-full h-full">
-    .
 
         <svg viewBox="0 0 480 480" class="w-full h-full">
           <defs>
@@ -725,12 +725,20 @@
           <div class="relative h-44 overflow-hidden" style="background:linear-gradient(135deg, var(--cyan), var(--primary))">
             <div class="absolute inset-0 grid-bg opacity-30 transition-transform duration-700 group-hover:scale-110"></div>
             <div class="absolute inset-0 bg-background/30 transition-colors duration-500 group-hover:bg-background/10"></div>
-            <div class="absolute bottom-3 left-4 font-mono text-xs text-foreground/80">~/projects/ai-agent-development</div>
-            <div class="absolute inset-x-4 bottom-4 translate-y-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-              <span class="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-glow">
-                View Project
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </span>
+           <div class="absolute bottom-3 left-4 font-mono text-xs text-foreground/80">
+  ~/projects/ai-agent-development
+</div>
+
+<!-- View Project Button (Top) -->
+<div class="absolute inset-x-4 top-4 -translate-y-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 flex justify-end">
+  <span class="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-glow">
+    View Project
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14"/>
+      <path d="m12 5 7 7-7 7"/>
+    </svg>
+  </span>
+</div>
             </div>
           </div>
           <div class="p-6">
@@ -753,11 +761,15 @@
             <div class="absolute inset-0 grid-bg opacity-30 transition-transform duration-700 group-hover:scale-110"></div>
             <div class="absolute inset-0 bg-background/30 transition-colors duration-500 group-hover:bg-background/10"></div>
             <div class="absolute bottom-3 left-4 font-mono text-xs text-foreground/80">~/projects/server-security-architecture</div>
-            <div class="absolute inset-x-4 bottom-4 translate-y-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-              <span class="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-glow">View Project
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </span>
-            </div>
+            <div class="absolute inset-x-4 top-4 -translate-y-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 flex justify-end">
+  <span class="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-glow">
+    View Project
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14"/>
+      <path d="m12 5 7 7-7 7"/>
+    </svg>
+  </span>
+</div>
           </div>
           <div class="p-6">
             <h3 class="font-display text-xl font-bold tracking-tight">Server Security Architecture</h3>
@@ -1015,6 +1027,7 @@
                class="grid h-11 w-11 place-items-center rounded-lg border border-border bg-card/60 text-muted-foreground backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:text-foreground hover:shadow-glow">
               <i class="fab fa-github"></i>
             </a>
+            
           </div>
         </div>
 
